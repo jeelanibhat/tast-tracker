@@ -1,22 +1,72 @@
 {
   "tasks": [
     {
-      "text": "watching traversy",
+      "text": "udemy",
+      "day": "sunday",
+      "reminder": true,
+      "id": 11
+    },
+    {
+      "text": "learn",
+      "day": "monday",
+      "reminder": false,
+      "id": 13
+    },
+    {
+      "text": "React js",
       "day": "Sunday",
       "reminder": true,
-      "id": 5
+      "id": 14
+    }
+  ],
+  "student": [
+    {
+      "name": "aqib",
+      "course": [
+        "networking"
+      ],
+      "id": 8
     },
     {
-      "text": "watching Dev ed",
-      "day": "Monday",
-      "reminder": false,
-      "id": 6
+      "name": [
+        "Ronaldo"
+      ],
+      "course": [
+        "Shopify"
+      ],
+      "id": 10
     },
     {
-      "text": "Watching Mosh",
-      "day": "Tuesday",
-      "reminder": true,
-      "id": 7
+      "name": "jack",
+      "course": "french",
+      "id": 11
+    },
+    {
+      "name": [
+        "jeelani hassan"
+      ],
+      "course": "MCA",
+      "id": 14
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "text": "laptop",
+      "amount": 50,
+      "IncExp": "expense"
+    },
+    {
+      "id": 2,
+      "text": "salary",
+      "amount": 100,
+      "IncExp": "income"
+    },
+    {
+      "id": 3,
+      "text": "car",
+      "amount": 20,
+      "IncExp": "expense"
     }
   ]
 }

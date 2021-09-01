@@ -17,8 +17,8 @@ class Slider extends Component {
         ></video>
         {/* <img src="images/bg/14.jpg" alt="" className="w-100" /> */}
         <div className="slider-content">
-          <h2>Jeelani Bhat</h2>
-          <p>Lets explore React together!</p>
+          <h2>Jeelani Bhat </h2>
+          <p>Lets explore together!</p>
         </div>
       </div>
     );

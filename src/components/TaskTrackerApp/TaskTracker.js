@@ -1,6 +1,7 @@
 import Tasks from "./Tasks";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import AddTask from "./AddTask";
+import { TaskContext } from "../ContextApi/TaskContext";
 
 const TaskTracker = () => {
   const btnClick = () => {
@@ -51,6 +52,7 @@ const TaskTracker = () => {
     const data = await res.json();
     setTasks(data);
   };
+
   // FETCH SINGLE FOR UPDATE
   const fetchTask = async (id) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`);
@@ -81,10 +83,12 @@ const TaskTracker = () => {
     );
   };
 
+  const [tasks1, setTasks1] = useContext(TaskContext);
+
   return (
     <div className="container my-5 task-tracker-wrap">
       <h2 className="text-center">Task Tracker</h2>
-      <div className="row">
+      <div className="row mb-5">
         <div className="border m-auto w-30">
           <div className="d-flex justify-content-end pt-0 p-3">
             <button
@@ -107,6 +111,33 @@ const TaskTracker = () => {
             )}
           </div>
         </div>
+      </div>
+
+      <hr></hr>
+      {/* <div className="row">Value :: {value}</div> */}
+      <div className="my-5">
+        <h3 className="text-left">
+          Data sharing between components : using Context Api
+        </h3>
+        <p>This data is reflecting in About and Contact page </p>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Sno</th>
+              <th>Author</th>
+              <th>Day</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks1.map((task, index) => (
+              <tr>
+                <td>{index + 1}</td>
+                <td>{task.text}</td>
+                <td>{task.day}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

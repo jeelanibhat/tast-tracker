@@ -6,7 +6,7 @@ const Shop = () => {
   const APP_KEY = "e12996178e68bf47ec0f2dc88d49db93";
 
   const [recipe, setRecipe] = useState([]);
-  const [query, setQuery] = useState("apple");
+  const [query, setQuery] = useState("banana");
 
   // it will run once only
   useEffect(() => {
@@ -19,8 +19,21 @@ const Shop = () => {
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
     );
     const data = await response.json();
-    console.log(data.hits);
+    console.log("data.hits ::", data.hits);
     setRecipe(data.hits);
+  };
+
+  // search Recipe
+  const searchRecipe = (e) => {
+    if (e.key === "Enter") {
+      const searchData = e.target.value;
+      if (searchData.length < 1) {
+        document.getElementById("errorMsg").classList.remove("d-none");
+      } else {
+        setQuery(searchData);
+        document.getElementById("errorMsg").classList.add("d-none");
+      }
+    }
   };
 
   return (
@@ -29,18 +42,26 @@ const Shop = () => {
         <img src="images/logo.png" />
         <h2 className="text-center">Recipe App</h2>
       </div>
-      <hr />
+      <div className="input-search mx-auto mb-3">
+        <input
+          type="text"
+          placeholder="Search Recipe..."
+          onKeyPress={searchRecipe}
+        />
+        <p className="text-danger mt-2 d-none" id="errorMsg">
+          Please enter your search term!
+        </p>
+      </div>
 
       {/* Recipe output */}
       <div className="recipe-result">
         <div className="border p-0 row">
           {recipe.map((recipe) => (
             <p key={recipe.recipe.label} className="recipe-title">
-              <Link to={`/shop/${recipe.recipe.label}`}>
-                {" "}
-                <img src={recipe.recipe.image} />
-                <p>{recipe.recipe.label}</p>
-              </Link>
+              <a href={recipe.recipe.url} target="_blank">
+                <img src={recipe.recipe.image} className="img-fluid" />
+                <p className="text-dark p-2">{recipe.recipe.label}</p>
+              </a>
             </p>
           ))}
         </div>

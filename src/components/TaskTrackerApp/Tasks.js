@@ -1,6 +1,9 @@
 const Tasks = ({ tasks, onDelete, onToggle }) => {
   return (
     <div className="tasks-container">
+      <cite>
+        Total Tasks: <b>{tasks.length}</b>
+      </cite>
       {tasks.map((task) => (
         <div key={task.id}>
           <div
